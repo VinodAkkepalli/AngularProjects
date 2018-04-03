@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { GreeterComponent } from './greeter/greeter.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { CalculatorResultComponent } from './calculator/calculatorResult.component';
 import { ProductsComponent } from './products/products.component';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { ProductsComponent } from './products/products.component';
     AppComponent,
     GreeterComponent,
     CalculatorComponent,
+    CalculatorResultComponent,
     ProductsComponent
   ],
   imports: [

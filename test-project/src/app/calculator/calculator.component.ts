@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import {CalculatorModel} from './CalculatorModel'
-//import {CalculatorResult} from './CalculatorResult'
 
 @Component({
   selector: 'app-calculator',

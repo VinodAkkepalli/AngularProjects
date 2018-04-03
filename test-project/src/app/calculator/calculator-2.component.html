@@ -10,5 +10,6 @@
   <option value="divide">Divide</option>
 </select>
 <input type="button" value="Calculate" (click)="model[operator]()">
-<div>{{model.result}}</div>
-<!--app-calculator-result></app-calculator-result-->
+
+<!-- Below we are passing a value to another component as input-->
+<app-calculator-result [data]="model.result"></app-calculator-result>
