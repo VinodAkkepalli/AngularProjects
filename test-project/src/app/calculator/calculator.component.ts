@@ -4,8 +4,10 @@ import {CalculatorModel} from './CalculatorModel'
 //import {CalculatorResult} from './CalculatorResult'
 
 @Component({
-  selector: 'calculator-root',
-  templateUrl: './calculator-2.component.html',
+  selector: 'app-calculator',
+  //templateUrl: './calculator.component.html',
+  //Changing just UI needs Changes to just html file as below
+  templateUrl: './calculator-2.component.html', 
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent {
