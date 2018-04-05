@@ -7,25 +7,39 @@ import {Bug} from './models/Bug'
   styleUrls: ['./bugTracker.component.css']
 })
 export class BugTrackerComponent {
-  list: string[] = [];
+  bugList: Bug[] = [];
 
   onBugAdd(bugName){
     let newBug : Bug = {
       name : bugName,
       isClosed : false
     };
-    this.list.push(newBug);
+    this.bugList.push(newBug);
   }
 
   onBugClick(bug : Bug){
     bug.isClosed = !bug.isClosed;
+    this.getClosedCount();
   }
 
   getClosedCount() {
-    return 1;
+    let closedCount = 0;
+    for(var i=this.bugList.length-1; i > -1 ; i--){
+      if(this.bugList[i].isClosed){
+        ++closedCount;
+      }
+    }
+    return closedCount;
   }
 
   removeClosedBugs(){
+    for(var i=this.bugList.length-1; i > -1 ; i--){
+      if(this.bugList[i].isClosed){
+        console.log("removing closed bug#: " + i );
+        
+        this.bugList.splice(i,1);
+      }
+    }
 
   }
 }
