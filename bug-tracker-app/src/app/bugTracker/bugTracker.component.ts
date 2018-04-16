@@ -23,12 +23,7 @@ export class BugTrackerComponent {
   }
 
   onBugAdd(){
-    // let newBug : Bug = {
-    //   name : bugName,
-    //   isClosed : false
-    // };
     let newBug = this.bugOperations.createNew(this.newBugName);
-    // this.bugList.push(newBug);
     this.bugList = [...this.bugList, newBug];
     this.newBugName = "";
   }
@@ -36,17 +31,6 @@ export class BugTrackerComponent {
   onBugClick(bugToToggle : Bug){
     let toggledBug = this.bugOperations.toggle(bugToToggle);
 		this.bugList = this.bugList.map(bug => bug === bugToToggle ? toggledBug : bug);
-  }
-
-  getClosedCount() {
-    console.log('getClosedCount triggered');
-    let closedCount = 0;
-    for(var i=this.bugList.length-1; i > -1 ; i--){
-      if(this.bugList[i].isClosed){
-        ++closedCount;
-      }
-    }
-    return closedCount;
   }
 
   removeClosedBugs(){
