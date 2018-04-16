@@ -13,12 +13,7 @@ export class BugTrackerComponent {
   sortBugDescending: boolean = false;
   
   constructor(private bugOperations : BugOperationsService){
-    this.bugList.push(this.bugOperations.createNew('Server communications failure'));
-		this.bugList.push(this.bugOperations.createNew('Application not responding'));
-		this.bugList.push(this.bugOperations.createNew('User actions not recognized'));
-		this.bugList.push(this.bugOperations.createNew('Data integrity checks failed'));
-
-    console.log(Promise);
+    this.bugList = this.bugOperations.getAll();
   }
 
   onNewBugCreated(newBug: Bug){
@@ -31,6 +26,8 @@ export class BugTrackerComponent {
   }
 
   removeClosedBugs(){
-    this.bugList = this.bugList.filter(bug => !bug.isClosed);
+    this.bugList.filter(bug => bug.isClosed)
+			.forEach(closedBug => this.bugOperations.remove(closedBug));
+		this.bugList = this.bugOperations.getAll();
   }
 }
