@@ -8,7 +8,8 @@ import { TrimTextPipe } from './bugTracker/pipes/TrimTextPipe'
 import { SortBugPipe } from './bugTracker/pipes/SortBugPipe'
 import { BugOperationsService } from './bugTracker/services/BugOperations.service';
 import { ClosedCountPipe } from './bugTracker/pipes/closedCountPipe';
-import { BugStatsComponent } from './bugTracker/views/bugStatsComponent';
+import { BugStatsComponent } from './bugTracker/views/bugStats.Component';
+import { BugAddComponent } from './bugTracker/views/bugAdd.Component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BugStatsComponent } from './bugTracker/views/bugStatsComponent';
     TrimTextPipe,
     SortBugPipe,
     ClosedCountPipe,
-    BugStatsComponent
+    BugStatsComponent,
+    BugAddComponent
   ],
   imports: [
     BrowserModule,

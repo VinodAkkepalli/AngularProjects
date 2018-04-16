@@ -3,7 +3,7 @@ import { Bug } from '../models/Bug'
 
 @Component({
     selector: 'app-bug-stats',
-    templateUrl: './bugStatsComponent.html',
+    templateUrl: './bugStats.Component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BugStatsComponent {

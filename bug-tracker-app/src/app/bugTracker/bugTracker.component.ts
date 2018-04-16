@@ -11,8 +11,7 @@ export class BugTrackerComponent {
   bugList: Bug[] = [];
   sortBugBy: string = 'name';
   sortBugDescending: boolean = false;
-  newBugName: string = "";
-
+  
   constructor(private bugOperations : BugOperationsService){
     this.bugList.push(this.bugOperations.createNew('Server communications failure'));
 		this.bugList.push(this.bugOperations.createNew('Application not responding'));
@@ -22,10 +21,8 @@ export class BugTrackerComponent {
     console.log(Promise);
   }
 
-  onBugAdd(){
-    let newBug = this.bugOperations.createNew(this.newBugName);
-    this.bugList = [...this.bugList, newBug];
-    this.newBugName = "";
+  onNewBugCreated(newBug: Bug){
+    this.bugList.push(newBug);
   }
 
   onBugClick(bugToToggle : Bug){
