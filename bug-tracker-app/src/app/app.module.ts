@@ -11,6 +11,7 @@ import { ClosedCountPipe } from './bugTracker/pipes/closedCountPipe';
 import { BugStatsComponent } from './bugTracker/views/bugStats.Component';
 import { BugAddComponent } from './bugTracker/views/bugAdd.Component';
 import { BugStorageService } from './bugTracker/services/BugStorage.service';
+import { ElapsedTimePipe } from './bugTracker/pipes/elapsedPipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BugStorageService } from './bugTracker/services/BugStorage.service';
     SortBugPipe,
     ClosedCountPipe,
     BugStatsComponent,
-    BugAddComponent
+    BugAddComponent,
+    ElapsedTimePipe
   ],
   imports: [
     BrowserModule,
