@@ -9,6 +9,7 @@ import { BugStatsComponent } from './bugTracker/views/bugStats.Component';
 import { BugAddComponent } from './bugTracker/views/bugAdd.Component';
 import { BugStorageService } from './bugTracker/services/BugStorage.service';
 import { UtilsModule } from './utils/utils.module';
+import { BugServerService } from './bugTracker/services/BugServer.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UtilsModule } from './utils/utils.module';
   ],
   providers: [
     BugOperationsService,
-    BugStorageService
+    BugStorageService,
+    BugServerService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Bug} from './models/Bug'
 import {BugOperationsService} from './services/BugOperations.service'
+import axios from 'axios'
 
 @Component({
   selector: 'app-bug-tracker',
@@ -13,7 +14,8 @@ export class BugTrackerComponent {
   sortBugDescending: boolean = false;
   
   constructor(private bugOperations : BugOperationsService){
-    this.bugList = this.bugOperations.getAll();
+    this.bugOperations.getAll()
+    .then(bugs => this.bugList = bugs)
   }
 
   onNewBugCreated(newBug: Bug){
@@ -21,13 +23,18 @@ export class BugTrackerComponent {
   }
 
   onBugClick(bugToToggle : Bug){
-    let toggledBug = this.bugOperations.toggle(bugToToggle);
-		this.bugList = this.bugList.map(bug => bug === bugToToggle ? toggledBug : bug);
+      this.bugOperations
+			.toggle(bugToToggle)
+      .then(toggledBug => 
+        this.bugList = this.bugList.map(bug => bug === bugToToggle ? toggledBug : bug));
   }
 
   removeClosedBugs(){
-    this.bugList.filter(bug => bug.isClosed)
-			.forEach(closedBug => this.bugOperations.remove(closedBug));
-		this.bugList = this.bugOperations.getAll();
+    this.bugList
+    .filter(bug => bug.isClosed)
+    .forEach(closedBug => this.bugOperations
+    .remove(closedBug)
+    .then(Response => this.bugList = this.bugList.filter(
+      bug => bug.id !== closedBug.id)))
   }
 }

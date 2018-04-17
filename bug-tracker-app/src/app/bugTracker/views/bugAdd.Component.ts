@@ -17,9 +17,12 @@ export class BugAddComponent {
 	}
 
     onBugAdd() {
-        let newBug = this.bugOperations.createNew(this.newBugName);
-        this.created.emit(newBug);
-        console.log(newBug);
-        this.newBugName = "";
+        let newBug = this.bugOperations
+        .createNew(this.newBugName)
+        .then(newBug => { 
+            console.log(newBug);
+            this.newBugName = "";
+            this.created.emit(newBug);    
+        })
     }
 }
