@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Bug } from '../models/Bug'
+import { Bug } from '../../bugTracker/models/Bug'
 
 interface Comparer{
 	(item1 : any, item2 : any) : number

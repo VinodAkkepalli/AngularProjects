@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Bug } from '../models/Bug'
+import { Bug } from '../../bugTracker/models/Bug'
 
 @Pipe({
 	name: 'closedCount'
