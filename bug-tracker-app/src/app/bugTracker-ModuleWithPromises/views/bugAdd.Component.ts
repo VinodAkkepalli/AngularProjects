@@ -19,7 +19,7 @@ export class BugAddComponent {
     onBugAdd() {
         let newBug = this.bugOperations
         .createNew(this.newBugName)
-        .subscribe(newBug => { 
+        .then(newBug => { 
             console.log(newBug);
             this.newBugName = "";
             this.created.emit(newBug);    
