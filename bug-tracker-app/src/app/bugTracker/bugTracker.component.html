@@ -9,13 +9,15 @@
 	<input type="checkbox" (change)="sortBugDescending=$event.target.checked">
 </section>
 
-<app-bug-add (created)="onNewBugCreated($event)"></app-bug-add>
+<!--app-bug-add (created)="onNewBugCreated($event)"></app-bug-add-->
+<a [routerLink]="['/add']" routerLinkActive="active">Create New</a>
 
 <section class="bugList">
 	<ol>
 		<li *ngFor="let x of (bugList | sortBug:sortBugBy:sortBugDescending)">
 			<span class="bugname" [ngClass]="{closed : x.isClosed}" (click)="onBugClick(x)">{{x.name | trimText:20}}</span>
 			<div class="datetime" title="{{x.createdAt | date:'dd-MMM-yyyy hh:mm:ss a'}}">Created At : {{x.createdAt | elapsedTime}}</div>
+			<div><a [routerLink]="['/details', x.id]" routerLinkActive="active">Click for Detils</a></div>
 		</li>
 	</ol>
 	<input type="button" value="Remove Closed" (click)="removeClosedBugs()">

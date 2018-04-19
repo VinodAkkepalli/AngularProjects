@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core'
+import { Router } from '@angular/router';
 import { Bug } from '../models/Bug'
 import { BugOperationsService } from '../services/BugOperations.service'
 
@@ -12,17 +13,18 @@ export class BugAddComponent {
     @Output()
     created : EventEmitter<Bug> = new EventEmitter<Bug>();
     newBugName: string = "";
+    newBugDesc: string = "";
     
-    constructor(private bugOperations : BugOperationsService){
+    constructor(private bugOperations : BugOperationsService,
+                private router: Router){
 	}
 
     onBugAdd() {
         let newBug = this.bugOperations
-        .createNew(this.newBugName)
+        .createNew(this.newBugName, this.newBugDesc)
         .subscribe(newBug => { 
-            console.log(newBug);
-            this.newBugName = "";
-            this.created.emit(newBug);    
+            //this.created.emit(newBug);    
+            this.router.navigate(['bugs'])
         })
     }
 }

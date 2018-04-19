@@ -17,10 +17,11 @@ export class BugOperationsService{
 		return this.bugServer.remove(bug);
 	}
 
-	createNew(bugName : string) : Observable<Bug> {
+	createNew(bugName : string, bugDescription : string) : Observable<Bug> {
 		let newBugData : Bug = {
 			id : 0,
 			name : bugName,
+			description : bugDescription,
 			isClosed : false,
 			createdAt : new Date
 		};

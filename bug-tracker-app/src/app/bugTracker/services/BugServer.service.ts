@@ -36,6 +36,12 @@ export class BugServerService {
 			.delete(`${this.baseUrl}/${bug.id}`)
 			.map(response => response.json());
 	}
+
+	get(id : number) : Observable<Bug>{
+		return  this.http
+			.get(`${this.baseUrl}/${id}`)
+			.map(response => response.json())
+	}
 }
 /* Using Promises
 export class BugServerService {

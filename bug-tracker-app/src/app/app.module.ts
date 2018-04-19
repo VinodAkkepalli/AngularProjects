@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from  '@angular/http'
 
+//Routing
+import {RouterModule, Routes} from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bugTracker/bugTracker.component';
 import { BugOperationsService } from './bugTracker/services/BugOperations.service';
@@ -11,6 +14,15 @@ import { BugAddComponent } from './bugTracker/views/bugAdd.Component';
 import { BugStorageService } from './bugTracker/services/BugStorage.service';
 import { UtilsModule } from './utils/utils.module';
 import { BugServerService } from './bugTracker/services/BugServer.service';
+import { BugDetailsComponent } from './bugTracker/views/bugDetails.Component';
+
+//Routing
+let routes : Routes = [
+  {path : 'bugs', component : BugTrackerComponent},
+  {path : '', redirectTo : '/bugs', pathMatch : 'full'},
+  {path : 'add', component : BugAddComponent},
+  {path : 'details/:id', component : BugDetailsComponent}
+]
 
 @NgModule({
   declarations: [
@@ -18,12 +30,14 @@ import { BugServerService } from './bugTracker/services/BugServer.service';
     BugTrackerComponent,
     BugStatsComponent,
     BugAddComponent,
+    BugDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     UtilsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [
     BugOperationsService,
